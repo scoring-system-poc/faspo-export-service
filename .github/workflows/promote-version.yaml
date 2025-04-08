@@ -45,6 +45,10 @@ jobs:
         run: |
           git add ${{ env.VERSION_FILE }}
           git commit -m "[skip ci] ${{ env.OLD_VERSION }} -> ${{ env.NEW_VERSION }}"
+          git push
+
+      - name: Create tag
+        run: |
           git tag -a "v${{ env.NEW_VERSION }}" -m "Version release: ${{ env.NEW_VERSION }}"
           git push origin "v${{ env.NEW_VERSION }}"
 
