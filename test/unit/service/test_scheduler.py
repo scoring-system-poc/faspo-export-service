@@ -29,8 +29,8 @@ async def test_schedule_exports():
 
         await scheduler._schedule_exports()
 
-        assert mock_schedule.every().day.at.called_once_with("00:00")
-        assert mock_schedule.every().day.at.return_value.do.called_once_with(
+        mock_schedule.every().day.at.assert_called_once_with("00:00")
+        mock_schedule.every().day.at.return_value.do.assert_called_once_with(
             scheduler._wrap_export_task_in_aio, CONFIG.EXPORT_SETUP[0],
         )
 
