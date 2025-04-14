@@ -43,7 +43,7 @@ async def get_export_data(
     doc_query = ("SELECT * FROM c "
                  "WHERE c._type = 'doc' "
                  "AND ARRAY_CONTAINS(@doc_types, c.type.key) "
-                 "AND @date_from <= x.version.datePublished AND x.version.datePublished < @date_to")
+                 "AND @date_from <= c.version.created AND c.version.created < @date_to")
     doc_params = [
         {"name": "@doc_types", "value": doc_types},
         {"name": "@date_from", "value": date_from.isoformat()},
