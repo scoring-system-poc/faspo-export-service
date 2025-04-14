@@ -1,6 +1,3 @@
-import dotenv
-dotenv.load_dotenv()
-
 import fastapi
 import contextlib
 import asgi_correlation_id
